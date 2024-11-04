@@ -1,0 +1,16 @@
+<!-- <li class="profile-nav onhover-dropdown" (click)="open()">
+  <div class="media profile-media">
+    <img class="b-r-10" src="assets/images/dashboard/profile.png" alt="">
+    <div class="media-body d-xxl-block d-none box-col-none">
+      <div class="d-flex align-items-center gap-2"> <span>{{user.strNombre}} </span><i class="middle fa fa-angle-down"> </i>
+      </div>
+      <p class="mb-0 font-roboto">{{user.strPuesto}}</p>
+    </div>
+  </div>
+  <ul class="profile-dropdown onhover-show-div" [ngClass]="{'active' : show == true}" >
+    <li><a class="btn btn-pill btn-outline-primary btn-sm" (click)="logOut()">Salir</a></li>
+  </ul>
+</li> -->
+<div class="mode" (click)="logOut()">
+  <app-feathericon [icon]="'log-out'"></app-feathericon>
+</div>

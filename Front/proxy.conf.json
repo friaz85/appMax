@@ -1,0 +1,12 @@
+{
+    "*/rest/*": {
+      "target": "https://72.167.54.207/OrdenesServiciosApi/api",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug",
+      "pathRewrite": {
+        "^/rest": ""
+      }
+    }
+  }
+  

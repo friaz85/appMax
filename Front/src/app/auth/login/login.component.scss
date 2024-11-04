@@ -1,0 +1,22 @@
+.img-logo {
+    width: 100%;
+}
+
+.login-card .logo {
+    background: linear-gradient(149deg, rgba(1, 101, 128, 1) 63%, rgba(0, 190, 231, 1) 100%);
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    & h1 {
+        color: #fff;
+        font-size: 2.5rem;
+    }
+}
+
+.btn {
+    font-size: 20px;
+}

@@ -1,0 +1,140 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="card-body">
+        <div class="accordion dark-accordion" id="simpleaccordion" ngbAccordion [closeOthers]="true">
+          @for( item of arrOrdenes; track item){
+          <div class="accordion-item accordion-wrapper" ngbAccordionItem>
+            <h2 ngbAccordionHeader class="accordion-header" id="headingOne">
+              <button class="accordion-button collapsed bg-light-primary txt-primary" type="button"
+                ngbAccordionButton>{{item.fServicio}} - {{item.localidad}} - {{item.cliente_Nombre}}
+
+              </button>
+            </h2>
+            <div class="accordion-collapse" id="collapseOne" ngbAccordionCollapse>
+              <div class="accordion-body" ngbAccordionBody>
+                <ng-template>
+                  <div class="row">
+                    <div class="col-12 text-center">
+                      <h3>Detalles de orden de servicio seleccionada</h3>
+                    </div>
+                  </div>
+                  <div class="row mt-4">
+                    <div class="col-6 text-start">
+                      <p><b>Fecha:</b></p>
+                    </div>
+                    <div class="col-6 text-end">
+                      <p>{{ item.fServicio }}</p>
+                    </div>
+                  </div>
+                  <div class="row mt-1">
+                    <div class="col-12 text-center">
+                      <p class="m-1"><b>Descripción</b></p>
+                    </div>
+                    <div class="col-12 text-center">
+                      <p class="m-1">{{ item.strDescripcion }}</p>
+                    </div>
+                  </div>
+                  <div class="row mt-1">
+                    <div class="col-12 text-center">
+                      <p class="m-1"><b>Modelo</b></p>
+                    </div>
+                    <div class="col-12 text-center">
+                      <p class="m-1">{{ item.strModelo }}</p>
+                    </div>
+                    <div class="col-6 text-start">
+                      <p class="m-1"><b>Marca</b></p>
+                    </div>
+                    <div class="col-6 text-end">
+                      <p class="m-1">{{ item.strMarca }}</p>
+                    </div>
+                    <div class="col-6 text-start">
+                      <p class="m-1"><b>Serie</b></p>
+                    </div>
+                    <div class="col-6 text-end">
+                      <p class="m-1">{{ item.serie }}</p>
+                    </div>
+                    <div class="col-6 text-start">
+                      <p class="m-1"><b>MPS</b></p>
+                    </div>
+                    <div class="col-6 text-end">
+                      <p class="m-1">{{ item.strEnergias }}</p>
+                    </div>
+                    <div class="col-12 text-center">
+                      <p class="m-1"><b>Cliente</b></p>
+                    </div>
+                    <div class="col-12 text-center">
+                      <p class="m-1">{{ item.cliente_Nombre }}</p>
+                    </div>
+                    <div class="col-6 text-start">
+                      <p class="m-1"><b>Sitio</b></p>
+                    </div>
+                    <div class="col-6 text-end">
+                      <p class="m-1">{{ item.strSitio }}</p>
+                    </div>
+                    <div class="col-6 text-start">
+                      <p class="m-1"><b>Ubicación</b></p>
+                    </div>
+                    <div class="col-6 text-end">
+                      <!-- <p>{{ item.strEnergias }}</p> -->
+                    </div>
+                    <div class="col-6 text-start">
+                      <p class="m-1"><b>Localidad</b></p>
+                    </div>
+                    <div class="col-6 text-end">
+                      <p class="m-1">{{ item.localidad }}</p>
+                    </div>
+                    <div class="col-6 text-start">
+                      <p class="m-1"><b>Región</b></p>
+                    </div>
+                    <div class="col-6 text-end">
+                      <p class="m-1">{{ item.strRegion }}</p>
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-12 text-center">
+                      <button class="btn btn-primary btn-block w-100" type="submit" (click)="aceptarOrden(item.intOSId, item.fServicio)">Aceptar asignación</button>
+                    </div>
+                    <div class="col-12 text-center mt-3">
+                      <button class="btn btn-secondary btn-block w-100" type="submit"
+                        (click)="showModalRechazo(modalContentRechazo, item.intOSId);">Rechazar asignación</button>
+                    </div>
+                  </div>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #modalContentRechazo let-close="close">
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h1><b>Rechazar asignación</b></h1>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-12 text-left mt-2">
+        <h2>Razón del rechazo</h2>
+      </div>
+      <div class="col-12 mt-2">
+        <select #cmbCostumer class="form-control" [(ngModel)]="idMotivo">
+          <option value="0">-Seleccione una opción-</option>
+          <option *ngFor="let item of arrMotivosRechazo" [value]="item.intMotivoId">{{ item.strMotivo }}</option>
+        </select>
+      </div>
+      <div class="col-12 text-center mt-2">
+        <textarea class="form-control" rows="4" placeholder="Observaciones" [(ngModel)]="txtObservaciones"></textarea>
+      </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="rechazarOrden()">Rechazar</button>
+    <button type="button" class="btn btn-secondary" (click)="close()">Cancelar</button>
+  </div>
+</div>
+</ng-template>
