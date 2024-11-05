@@ -3,12 +3,19 @@ import { ContentComponent } from './shared/component/layout/content/content.comp
 import { dashData } from './shared/routes/routes'
 import { LoginComponent } from './auth/login/login.component';
 import { AdminGuard } from './shared/guard/admin.guard';
+import { EncuestaComponent } from './encuesta/encuesta.component';
 
 export const routes: Routes = [
     {
         path: '',
         // redirectTo: 'auth/login',
         component: LoginComponent,
+        pathMatch: 'full'
+    },
+    {
+        path: 'encuesta',
+        // redirectTo: 'auth/login',
+        component: EncuestaComponent,
         pathMatch: 'full'
     },
     // {

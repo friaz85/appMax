@@ -33,24 +33,14 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
-  login(username: string, password: string) {
-    const headers = {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-    };
+  login(idEmpresa: any, idSucursal:any, username: string, password: string) {
     return this.http
-      .post<any>('/rest/Usuarios/', {
-        "strUsuario": username,
-        "strPassword": password,
-        "strMail":"",
-        "strNombre":"",
-        "strPuesto":""    
-    }, 
-    {
-      headers: {
-      'Access-Control-Allow-Origin': '*'
-    }
-  })
+      .post<any>(this.url + '/login/', {
+        "usuario": username,
+        "pwd": password,
+        "idEmpresa": idEmpresa,
+        "idSucursal": idSucursal 
+    })
       .pipe(
         map((user) => {
           console.log(user);

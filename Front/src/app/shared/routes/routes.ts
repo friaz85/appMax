@@ -1,4 +1,3 @@
-import { OrdenesComponent } from '../../component/pages/ordenes/ordenes.component';
 import { Routes } from '@angular/router';
 
 export const dashData: Routes = [

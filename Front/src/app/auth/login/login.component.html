@@ -4,29 +4,51 @@
             <div class="login-card login-dark">
                 <div>
                     <div class="logo">
-                        <h1>Órdenes de servicio</h1>
+                        <h1>Bienvenido</h1>
                     </div>
                     <div class="login-main">
                         <form class="theme-form" [formGroup]="loginForm">
                             <div class="d-flex justify-content-center">
-                                <img class="img-logo for-dark" src="assets/images/logo/elekta-logo.png" alt="looginpage">
-                                <img class="img-logo for-light" src="assets/images/logo/elekta-logo.png" alt="looginpage">
+                                <img class="img-logo for-dark" src="assets/images/logo/Logo-grupo-max.png" alt="looginpage">
+                                <img class="img-logo for-light" src="assets/images/logo/Logo-grupo-max.png" alt="looginpage">
                             </div>
                             <div class="form-group">
-                                <label class="col-form-label">Email</label>
-                                <input class="form-control" type="email" required="" placeholder="prueba@tucorreo.com"
-                                    formControlName="email">
-                                @if(loginForm.controls['email'].touched &&
-                                loginForm.controls['email'].errors?.['required']){
+                                <label class="col-form-label">Empresa</label>
+                                <select class="form-control" formControlName="empresa" (change)="getSucursalPorEstado($any($event).target.value)">
+                                    <option value="">Selecciona una empresa</option>
+                                    <option *ngFor="let empresa of empresas" [value]="empresa.idEmpresa">{{empresa.Empresa}}</option>
+                                </select>
+                                @if(loginForm.controls['empresa'].touched &&
+                                loginForm.controls['empresa'].errors?.['required']){
                                 <div class="text text-danger mt-1"> Campo requerido</div>
                                 }
-                                @if(loginForm.controls['email'].touched &&
-                                loginForm.controls['email'].errors?.['email']){
-                                <div class="text text-danger mt-1">Correo inválido</div>
+                            </div>
+                            <div class="form-group" *ngIf="sucursales.length > 0">
+                                <label class="col-form-label">Sucursal</label>
+                                <select class="form-control" formControlName="sucursal">
+                                    <option value="">Selecciona una sucursal</option>
+                                    <option *ngFor="let sucursal of sucursales" [value]="sucursal.idSucursal">{{sucursal.Sucursal}}</option>
+                                </select>
+                                @if(loginForm.controls['sucursal'].touched &&
+                                loginForm.controls['sucursal'].errors?.['sucursal']){
+                                <div class="text text-danger mt-1"> Campo requerido</div>
                                 }
                             </div>
                             <div class="form-group">
-                                <label class="col-form-label">Password</label>
+                                <label class="col-form-label">Usuario</label>
+                                <input class="form-control" type="text" required="" placeholder="Ingresa tu usuario"
+                                    formControlName="usuario">
+                                @if(loginForm.controls['usuario'].touched &&
+                                loginForm.controls['usuario'].errors?.['required']){
+                                <div class="text text-danger mt-1"> Campo requerido</div>
+                                }
+                                @if(loginForm.controls['usuario'].touched &&
+                                loginForm.controls['usuario'].errors?.['usuario']){
+                                <div class="text text-danger mt-1">Usuario inválido</div>
+                                }
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label">Contraseña</label>
                                 <div class="form-input position-relative">
                                     <input class="form-control" [type]="show ? 'text' : 'password'" type="password"
                                         name="login[password]" required="" placeholder="*********"

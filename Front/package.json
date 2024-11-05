@@ -1,9 +1,9 @@
 {
-  "name": "Syee_Elekta",
+  "name": "Max App",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.conf.json",
+    "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -34,7 +34,7 @@
     "moment": "^2.30.1",
     "primeng": "^17.18.11",
     "rxjs": "~7.8.0",
-    "sweetalert2": "^11.14.4",
+    "sweetalert2": "^11.6.13",
     "tslib": "^2.3.0",
     "wrapper": "^0.1.0",
     "zone.js": "~0.14.2"
