@@ -33,13 +33,13 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
-  login(idEmpresa: any, idSucursal:any, username: string, password: string) {
+  login(username: string, password: string) {
     return this.http
       .post<any>(this.url + '/login/', {
         "usuario": username,
         "pwd": password,
-        "idEmpresa": idEmpresa,
-        "idSucursal": idSucursal 
+        // "idEmpresa": idEmpresa,
+        // "idSucursal": idSucursal 
     })
       .pipe(
         map((user) => {

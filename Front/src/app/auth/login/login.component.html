@@ -13,28 +13,6 @@
                                 <img class="img-logo for-light" src="assets/images/logo/Logo-grupo-max.png" alt="looginpage">
                             </div>
                             <div class="form-group">
-                                <label class="col-form-label">Empresa</label>
-                                <select class="form-control" formControlName="empresa" (change)="getSucursalPorEstado($any($event).target.value)">
-                                    <option value="">Selecciona una empresa</option>
-                                    <option *ngFor="let empresa of empresas" [value]="empresa.idEmpresa">{{empresa.Empresa}}</option>
-                                </select>
-                                @if(loginForm.controls['empresa'].touched &&
-                                loginForm.controls['empresa'].errors?.['required']){
-                                <div class="text text-danger mt-1"> Campo requerido</div>
-                                }
-                            </div>
-                            <div class="form-group" *ngIf="sucursales.length > 0">
-                                <label class="col-form-label">Sucursal</label>
-                                <select class="form-control" formControlName="sucursal">
-                                    <option value="">Selecciona una sucursal</option>
-                                    <option *ngFor="let sucursal of sucursales" [value]="sucursal.idSucursal">{{sucursal.Sucursal}}</option>
-                                </select>
-                                @if(loginForm.controls['sucursal'].touched &&
-                                loginForm.controls['sucursal'].errors?.['sucursal']){
-                                <div class="text text-danger mt-1"> Campo requerido</div>
-                                }
-                            </div>
-                            <div class="form-group">
                                 <label class="col-form-label">Usuario</label>
                                 <input class="form-control" type="text" required="" placeholder="Ingresa tu usuario"
                                     formControlName="usuario">

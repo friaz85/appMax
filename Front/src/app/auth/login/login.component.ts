@@ -33,8 +33,8 @@ export class LoginComponent {
     this.loginForm = this.fb.group({
       usuario: ["", [Validators.required]],
       password: ["", Validators.required],
-      empresa: ["", Validators.required],
-      sucursal: ["", Validators.required],
+      // empresa: ["", Validators.required],
+      // sucursal: ["", Validators.required],
     });
 
   }
@@ -60,7 +60,7 @@ export class LoginComponent {
   // Simple Login
   async login() {
     try {
-      this.auth.login(this.loginForm.value["empresa"], this.loginForm.value["sucursal"], this.loginForm.value["usuario"], this.loginForm.value["password"]).subscribe(async (data) => {
+      this.auth.login(this.loginForm.value["usuario"], this.loginForm.value["password"]).subscribe(async (data) => {
         console.log(data);
 
       });
